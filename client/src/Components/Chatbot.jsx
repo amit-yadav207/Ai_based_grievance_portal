@@ -38,7 +38,7 @@ function Chatbot() {
 
   const context=`Welcome to the Support Chatbot!
 
-  I’m here to help you with any issues or concerns you might have. Please provide a brief description of the problem you're experiencing, and I will guide you through the process to get it resolved by the right department.
+  Im here to help you with any issues or concerns you might have. Please provide a brief description of the problem you're experiencing, and I will guide you through the process to get it resolved by the right department.
   
   User: I need to report a malfunctioning streetlight on Oak Street.
   
