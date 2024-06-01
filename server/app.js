@@ -41,6 +41,7 @@ const officerRouter = require('./routes/officer')
 const complaintsRouter = require('./routes/complaints')
 const tasksRouter = require('./routes/tasks');
 const adminRouter = require('./routes/admin')
+const chatRouter = require('./routes/chat');
 const { roleAuthenticationMiddleware } = require('./middleware/roleAuthentication.js');
 
 // routes
@@ -51,7 +52,10 @@ app.use('/api/v1/complaints', authenticateUser, roleAuthenticationMiddleware('us
 app.use('/api/v1/officer', authenticateOfficer, roleAuthenticationMiddleware('officer'), officerRouter)
 app.use('/api/v1/tasks', authenticateOfficer, roleAuthenticationMiddleware('officer'), tasksRouter)
 app.use('/api/v1/manage', authenticateAdmin, roleAuthenticationMiddleware('admin'), adminRouter)
-
+app.use('/api/v1/chat', authenticateUser, chatRouter)
+app.use('/', (req, res) => {
+  return res.sendFile('index2.html', { root: __dirname });
+});
 
 // app.use('/api/v1/complaints',complaintsRouter)
 

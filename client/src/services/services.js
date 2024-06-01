@@ -14,12 +14,12 @@ export default {
 };
 
 let data = JSON.stringify({
-  name: "vishesh",
-  email: "v@gmail.com",
+  name: "amit",
+  email: "amit@gmail.com",
   password: "secretpass",
   age: 20,
   phone: "9903785230",
-  district: "delhi",
+  district: "jalandhar",
 });
 
 let config = {

@@ -4,61 +4,62 @@ import Footer from "./Footer";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
+
 function Login(props){
   const [loginData, setLoginData] = React.useState({email:"", password:""});
-  const [user,setUser]=React.useState("Citizen");
+  const [user, setUser] = React.useState("Citizen");
+  
   function handleChange(e){
     setLoginData({...loginData, [e.target.name]:e.target.value});
   }
-  function handleRadio(e){
+  
+  function handleUserChange(e){
     setUser(e.target.value);
   }
-  const navigate=useNavigate();
- let config = {
-   method: "post",
-   maxBodyLength: Infinity,
-   url: (user=="Citizen"?("http://localhost:3000/api/v1/auth/login"):(user=="Officer"?("http://localhost:3000/api/v1/auth/officer/login"):("http://localhost:3000/api/v1/auth/admin/login"))) ,
-   headers: {
-     Authorization: "Bearer ",
-     "Content-Type": "application/json",
-   },
-   data:loginData,
- };
-  async function handleSubmit(e){
-    e.preventDefault();
-    // setLoading(true);
-    if(loginData.email=="" || loginData.password==""){
-      // setLoading(false)
-      alert("Please fill all the fields");
-    }
-    else{ 
-      try {
-      axios
-        .request(config)
-        .then((response) => {
-          console.log("got user")
-          console.log(JSON.stringify(response.data));
-          localStorage.setItem("token", response.data.token);
-          setLoading(false);
-          // navigate("/MainAdminPage") //here changed
-          {user=="Citizen"?navigate("/userpage"):(user=="Officer"?navigate("/adminpage"):navigate("/MainAdminPage"))}
-      })
-        .catch((error) => {
-          if(error.response.status==401){
-            setLoading(false)
-            alert("Invalid Credentials");
-          }
-        });
 
-    } catch (error) {
-      console.log(" errro in useAdmin");
-    }
+  const navigate = useNavigate();
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if(loginData.email === "" || loginData.password === ""){
+      alert("Please fill all the fields");
+    } else { 
+      try {
+        const url = user === "Citizen" ? "http://localhost:3000/api/v1/auth/login" : 
+                    user === "Officer" ? "http://localhost:3000/api/v1/auth/officer/login" : 
+                                          "http://localhost:3000/api/v1/auth/admin/login";
+        const config = {
+          method: "post",
+          maxBodyLength: Infinity,
+          url: url,
+          headers: {
+            Authorization: "Bearer ",
+            "Content-Type": "application/json",
+          },
+          data: loginData,
+        };
+
+        const response = await axios.request(config);
+        console.log("got user")
+        console.log(JSON.stringify(response.data));
+        localStorage.setItem("token", response.data.token);
+        setLoading(false);
+        navigate(user === "Citizen" ? "/userpage" : user === "Officer" ? "/adminpage" : "/MainAdminPage");
+      } catch (error) {
+        if(error.response && error.response.status === 401){
+          alert("Invalid Credentials");
+        }
+        console.log("error in handleSubmit", error);
+      }
     }
   }
-  const [loading,setLoading]=React.useState(false);
+  
+  const [loading, setLoading] = React.useState(false);
+  
   function forgotPassword(){
     navigate("/ForgotPassword");
   }
+  
   const [showPassword, setShowPassword] = React.useState(false);
 
   const togglePasswordVisibility = () => {
@@ -103,9 +104,7 @@ function Login(props){
                   id="email"
                   placeholder="example@example.com"
                   className="block w-full px-4 py-2 mt-2 bg-white rounded-md"
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
+                  onChange={(e) => handleChange(e)}
                 />
               </div>
 
@@ -129,9 +128,7 @@ function Login(props){
                     id="password"
                     placeholder="Your Password"
                     className="block w-full px-4 py-2 mt-2 bg-white  rounded-md"
-                    onChange={(e) => {
-                      handleChange(e);
-                    }}
+                    onChange={(e) => handleChange(e)}
                   />
                   <button
                     onClick={togglePasswordVisibility}
@@ -142,54 +139,19 @@ function Login(props){
                 </div>
               </div>
 
-              <div className="mb-2 mt-8 py-1">
-                <input
-                  checked
-                  id="default-radio-1"
-                  type="radio"
-                  value="Citizen"
-                  name="default-radio"
-                  className="w-4 h-4   focus:ring-blue-500 "
-                  onClick={handleRadio}
-                />
-                <label
-                  htmlFor="default-radio-1"
-                  className="ml-3 text-l  text-white"
+              <div className="mt-6">
+                <label htmlFor="userRole" className="text-white block mb-2">User Role:</label>
+                <select
+                  id="userRole"
+                  name="userRole"
+                  value={user}
+                  onChange={handleUserChange}
+                  className="block w-full px-4 py-2 mt-2 bg-white rounded-md"
                 >
-                  Citizen
-                </label>
-              </div>
-              <div className=" mb-2 mt-2 flex items-center py-0">
-                <input
-                  id="default-radio-2"
-                  type="radio"
-                  value="Officer"
-                  name="default-radio"
-                  className="w-4 h-4  focus:ring-blue-500"
-                  onClick={handleRadio}
-                />
-                <label
-                  htmlFor="default-radio-2"
-                  className="ml-3 text-l  text-white"
-                >
-                  Officer
-                </label>
-              </div>
-              <div className="mt-2 flex items-center py-0">
-                <input
-                  id="default-radio-2"
-                  type="radio"
-                  value="Admin"
-                  name="default-radio"
-                  className="w-4 h-4  focus:ring-blue-500"
-                  onClick={handleRadio}
-                />
-                <label
-                  htmlFor="default-radio-2"
-                  className="ml-3 text-l  text-white"
-                >
-                  Admin
-                </label>
+                  <option value="Citizen">Citizen</option>
+                  <option value="Officer">Officer</option>
+                  <option value="Admin">Admin</option>
+                </select>
               </div>
 
               <div className="mt-6 flex justify-center ">

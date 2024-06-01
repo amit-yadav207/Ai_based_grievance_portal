@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        100: "45.5rem",
-        120: "35.5rem",
+        100: "40.5rem",
+        120: "30.5rem",
       },
       animation: {
         scroll: "scroll 40s linear infinite",

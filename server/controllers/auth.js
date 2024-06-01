@@ -1,4 +1,6 @@
 const User = require('../models/User')
+const Admin = require('../models/Admin')
+const Officer = require('../models/Officer')
 const { StatusCodes } = require('http-status-codes')
 const { BadRequestError, UnauthenticatedError } = require('../errors/')
 var nodemailer = require('nodemailer');

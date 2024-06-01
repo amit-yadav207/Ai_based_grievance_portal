@@ -1,94 +1,62 @@
-import React from "react";
-import pfp from "../Images/pfp.png"
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import Loading from "./Loading";
-export default function UserProfile(props){
+import pfp from "../Images/pfp.png";
+
+export default function UserProfile(props) {
   const token = localStorage.getItem("token");
-  // console.log("token in frontned userprofile ",token)
-  let config = {
-    method: "get",
-    maxBodyLength: Infinity,
-    url: "http://localhost:3000/api/v1/user",
-    headers: {
-      Authorization:
-        `Bearer ${token}`,
-    },
-  };
-  const [userData,setUserData]=React.useState({})
-  React.useEffect(() => {
-  axios
-    .request(config)
-    .then((response) => {
-      console.log(JSON.stringify(response.data));
-      setUserData(response.data.user)
-      setLoading(false);
-      
-    })
-    .catch((error) => {
-      console.log(error);
-      alert("Error Occured")
-    });
-  }, [])
-  const navigate=useNavigate()
-  function checkLogin(){
-    if(!token){
-      navigate("/userAdminLogin")
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/userAdminLogin");
+    } else {
+      axios
+        .get("http://localhost:3000/api/v1/user", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          setUserData(response.data.user);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("Error Occurred");
+        });
     }
-  }
-  const [loading, setLoading] = React.useState(true);
-   return (
-     <>
-       {checkLogin}
-       <div
-         className={
-           props.visible == "profile" && loading == false
-             ? "p-4 view-profile-content dashboard w-full md:w-3/4 h-100  pt-16 "
-             : "hidden"
-         }
-       >
-         <h1 className="text-center text-3xl  md:text-7xl font-semibold">YOUR PROFILE</h1>
-         <div className="flex justify-center">
-           <div className="border-2 mix-blend- shadow-2xl md:w-4/6 mt-12 md:mt-24 p-8 rounded-xl">
-             <div className="name-input flex justify-center items-center">
-               <h4 className="text-xl md:text-3xl font-bold ml-6">Name:</h4>
-               <h4 className="text-xl md:text-3xl ml-4 md:ml-8">
-                 {userData.name}
-               </h4>
-             </div>
-             <div className="name-input flex justify-center items-center mt-6 md:mt-10">
-               <h4 className="text-xl md:text-3xl font-bold ml-6">Email:</h4>
-               <h4 className="text-xl md:text-3xl ml-4 md:ml-8">
-                 {userData.email}
-               </h4>
-             </div>
-             <div className="name-input flex justify-center items-center mt-6 md:mt-10">
-               <h4 className="text-xl md:text-3xl font-bold ml-6">
-                 Phone Number:
-               </h4>
-               <h4 className="text-xl md:text-3xl ml-4 md:ml-8">
-                 {userData.phone}
-               </h4>
-             </div>
-             <div className="name-input flex justify-center items-center mt-6 md:mt-10">
-               <h4 className="text-xl md:text-3xl font-bold ml-6">Age:</h4>
-               <h4 className="text-xl md:text-3xl ml-4 md:ml-8">
-                 {userData.age}
-               </h4>
-             </div>
-             <div className="name-input flex justify-center items-center mt-6 md:mt-10">
-               <h4 className="text-xl md:text-3xl text-center font-bold ml-6">
-                 District:
-               </h4>
-               <h4 className="text-xl md:text-3xl  ml-4 md:ml-8">
-                 {userData.district}
-               </h4>
-             </div>
-           </div>
-         </div>
-       </div>
-       {loading == true && <Loading />}
-     </>
-   );
+  }, [navigate, token]);
+
+  return (
+    <>
+      <div
+        className={`${
+          props.visible === "profile" && !loading
+            ? "p-4 view-profile-content dashboard w-full md:w-3/4 h-100 pt-16"
+            : "hidden"
+        }`}
+      >
+        <h1 className="text-center text-3xl md:text-4xl lg:text-5xl font-semibold mb-8">YOUR PROFILE</h1>
+        <div className="flex justify-center">
+          <div className="bg-white border border-gray-300 shadow-lg rounded-xl p-8 md:w-4/6 mt-12 md:mt-24">
+            <ProfileItem label="Name" value={userData.name} />
+            <ProfileItem label="Email" value={userData.email} />
+            <ProfileItem label="Phone Number" value={userData.phone} />
+            <ProfileItem label="Age" value={userData.age} />
+            <ProfileItem label="District" value={userData.district} />
+          </div>
+        </div>
+      </div>
+      {loading && <Loading />}
+    </>
+  );
 }
-//05326456990
+
+const ProfileItem = ({ label, value }) => (
+  <div className="flex justify-between items-center border-b py-3">
+    <h4 className="text-lg md:text-xl font-semibold">{label}</h4>
+    <h4 className="text-lg md:text-xl">{value}</h4>
+  </div>
+);

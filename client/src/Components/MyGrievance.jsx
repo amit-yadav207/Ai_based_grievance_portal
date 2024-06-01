@@ -25,7 +25,7 @@ const MyGrievance = (props) => {
     axios
       .request(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
+        // console.log(JSON.stringify(response.data));
         setGrievances(response.data.complaints);
       })
       .catch((error) => {
@@ -54,7 +54,7 @@ const MyGrievance = (props) => {
     axios
       .request(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
+        // console.log(JSON.stringify(response.data));
         alert("Reopened Successfully");
         window.location.reload(true);
       })
@@ -94,7 +94,7 @@ const MyGrievance = (props) => {
     setRating(e.target.value);
   };
 
-  console.log(rating);
+  console.log("rating", rating);
 
   const handleRating = (id) => {
     if (rating === -1) {
@@ -116,7 +116,7 @@ const MyGrievance = (props) => {
       axios
         .request(config3)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
+          // console.log(JSON.stringify(response.data));
           alert("Rating submitted");
           window.location.reload(true);
           setLoading(false);
@@ -141,7 +141,7 @@ const MyGrievance = (props) => {
     axios
       .request(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
+        // console.log(JSON.stringify(response.data));
         alert("Deleted Successfully");
         setLoading(false);
         window.location.reload(true);
@@ -183,7 +183,7 @@ const MyGrievance = (props) => {
             grievance.lastRemindedAt == null ||
             new Date().getDate() -
               new Date(grievance.lastRemindedAt).getDate() >
-              1 ? (
+              7 ? (
               <>
                 <button
                   className="bg-light-green hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -255,7 +255,7 @@ const MyGrievance = (props) => {
                 Rate
               </button>
             </form>
-          ) : grievance.status === "resolved" ? (
+          ) : grievance.status === "resolved" && grievance.isRated === true ? (
             "Thank you for your feedback"
           ) : (
             "We are working on it"

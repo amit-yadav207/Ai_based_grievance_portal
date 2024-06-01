@@ -47,7 +47,7 @@ const passTask = async (req, res) => {
   //   throw new BadRequestError("Please provide a level");
   // }
 
-  // console.log("Reason:        ", req.body)
+  console.log("Reason:        ", req.body.reason)
   const officer = await Officer.findOne({ _id: officerId });
   const compl = await Complaint.findOne({ _id: complaintId })
   if (!compl) {
