@@ -4,7 +4,7 @@ const router = express.Router();
 // const bot = require('../chat/bot');
 const dotenv = require('dotenv');
 const apiKey = process.env.GOOGLE_API_KEY;
-const genAI = new GoogleGenerativeAI("AIzaSyCEa5UhhkZrMpF2PwoVVUKbdxPDYJVz0sE");
+const genAI = new GoogleGenerativeAI("AIzaSyCA500Msfek2lCAVYOZuzENb7JCveTYJUU");
 const User = require('../models/User')
 const ChatHistory = require('../models/ChatHistory')
 // Initialize chat with history
