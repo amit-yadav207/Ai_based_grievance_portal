@@ -4,14 +4,14 @@ const router = express.Router();
 // const bot = require('../chat/bot');
 const dotenv = require('dotenv');
 const apiKey = process.env.GOOGLE_API_KEY;
-const genAI = new GoogleGenerativeAI("AIzaSyCA500Msfek2lCAVYOZuzENb7JCveTYJUU");
+const genAI = new GoogleGenerativeAI(apiKey);
 const User = require('../models/User')
-const ChatHistory = require('../models/ChatHistory')
+
 // Initialize chat with history
 let chat;
 dotenv.config();
 async function initializeChat() {
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash-latest' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
     chat = model.startChat({
         history: [
             { role: 'user', parts: [{ text: 'Hello, I would like to report a power outage in my area.' }] },
@@ -116,33 +116,6 @@ router.post('/message', async (req, res) => {
     }
 });
 
-// Function to store user and bot response in chat history and update the user
-async function storeChatAndUserResponse(userId, userResponse, botResponse) {
-    try {
-        // Create a new chat history object
-        const chatHistory = new ChatHistory({
-            userResponse: userResponse,
-            botResponse: botResponse
-        });
-
-        // Find the user by ID
-        let user = await User.findById(userId);
-
-        if (!user) {
-            throw new Error('User not found');
-        }
-
-        // Push the new chat history object into the chatHistory array of the user
-        user.chatHistory.push(chatHistory);
-
-        // Save the updated user
-        await user.save();
-
-        console.log('Chat history saved and user updated successfully');
-    } catch (error) {
-        console.error('Error storing chat history and updating user:', error.message);
-    }
-}
 
 
 module.exports = router;

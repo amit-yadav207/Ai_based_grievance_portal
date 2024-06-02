@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const dotenv = require('dotenv')
 const crypto = require('crypto');
-const ChatHistory = require('../models/ChatHistory')
+
 
 // Define the User schema
 const UserSchema = new mongoose.Schema({
@@ -46,7 +46,7 @@ const UserSchema = new mongoose.Schema({
     },
     passwordResetToken: String,
     passwordResetExpires: Date,
-    chatHistory: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ChatHistory' }] // Reference to ChatHistory schema
+    
 });
 
 
