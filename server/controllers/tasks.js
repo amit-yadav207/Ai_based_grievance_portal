@@ -186,13 +186,13 @@ const sendEmail = async (to, subject, body) => {
       port: 465,
       secure: true,
       auth: {
-        user: 'grievanceportaliiita4@gmail.com',
-        pass: 'bryoccqsbhkhnhah',
+        user: 'nodemailertester999@gmail.com',
+        pass: 'utawqxtvaenbtugz',
       },
     });
 
     let info = await transporter.sendMail({
-      from: ' "Grievance Portal" <grievanceportaliiita@gmail.com>',
+      from: ' "Grievance Portal" <nodemailertester999@gmail.com>',
       to: to,
       subject: `New Update about your grievance "${subject}"`,
       text: `Update: ${body}`
