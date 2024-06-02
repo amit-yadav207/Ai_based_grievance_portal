@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Modal(props) {
   if(!props.visible)return null;
-  console.log(props.data)
+  // console.log(props.data)
   let i=1
   const data=props.data.map((action)=>{
     return (

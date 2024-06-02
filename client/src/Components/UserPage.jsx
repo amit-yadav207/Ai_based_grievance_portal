@@ -7,7 +7,7 @@ import UpdateUserProfile from "./UpdateUserProfile";
 import FileNewGrievance from "./FileNewGrievance";
 import MyGrievance from "./MyGrievance";
 import Footer from "./Footer";
-
+import Chatbot from "./Chatbot";
 export default function UserPage() {
   const [items, setItems] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,7 +24,7 @@ export default function UserPage() {
     axios
       .get(api, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
-        console.log("res ",res.data);
+        // console.log("res ",res.data);
         setItems(res.data);
         setIsLoaded(true);
         setRedirectToReferrer(false);
@@ -89,6 +89,7 @@ export default function UserPage() {
           <MyGrievance visible={visible} />
           <UpdateUserProfile visible={visible} />
         </div>
+        <Chatbot/>
         <Footer className="z-10" />
       </div>
     </div>

@@ -23,4 +23,11 @@ const updateUserDetails = async (req, res) => {
     res.status(StatusCodes.OK).json({ user })
 }
 
-module.exports = { updateUserDetails, getUserDetails }
+
+
+
+const getHistory = async (req, res) => {
+    const user = await User.findOne({ _id: req.user.userId })
+    res.status(StatusCodes.OK).json({ user })
+}
+module.exports = { updateUserDetails, getUserDetails ,getHistory}

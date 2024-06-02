@@ -66,46 +66,40 @@ const OfficerSchema = new mongoose.Schema({
                 ref: 'User',
             },
         }
-
     ]
 })
 
-// OfficerSchema.pre('save', async function () {
+OfficerSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) {
+        return next();
+    }
 
-//     const salt = await bcrypt.genSalt(10);
-//     this.password = await bcrypt.hash(this.password, salt)
-
-// })
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+});
 
 OfficerSchema.methods.getName = function () {
-    return this.name
+    return this.name;
 }
 
 OfficerSchema.methods.createJWT = function () {
     return jwt.sign({ userId: this._id, name: this.name }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN
-    })
+    });
 }
-
 
 OfficerSchema.methods.addComplaint = async function (complaintId) {
     this.complaints.push(complaintId);
     await this.save();
-    console.log("add complaint to officer ")
+    console.log("add complaint to officer ");
 };
 
-
 OfficerSchema.methods.addRating = async function (numberofstars, complaintId, userId) {
-
     console.log({ numberofstars, complaintId, userId });
     this.ratings.push({ numberofstars, complaintId, userId });
 
-    let oldavg;
-
-
-    if (!this.avgRating) oldavg = 0;
-    else oldavg = this.avgRating;
-
+    let oldavg = this.avgRating || 0;
     let n = this.ratings.length;
     let newavg = (oldavg * (n - 1) + numberofstars) / n;
     this.avgRating = newavg;
@@ -114,11 +108,8 @@ OfficerSchema.methods.addRating = async function (numberofstars, complaintId, us
 };
 
 OfficerSchema.methods.comparePassword = async function (candidatePassword) {
-
-    const isMatch = await bcrypt.compare(candidatePassword, this.password)
-
-    // console.log(isMatch)
-    return isMatch
+    const isMatch = await bcrypt.compare(candidatePassword, this.password);
+    return isMatch;
 }
 
-module.exports = mongoose.model('Officer', OfficerSchema)
+module.exports = mongoose.model('Officer', OfficerSchema);

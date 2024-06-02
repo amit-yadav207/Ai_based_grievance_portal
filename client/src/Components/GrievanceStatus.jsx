@@ -35,27 +35,31 @@ export default function GrievanceStatus(props) {
   }
   function handleForward(complaint) {
     const rsn = prompt("Write reason for forwarding: ");
-    if (rsn.length > 0) {
-      setReason(rsn);
+    if (rsn && rsn.trim().length > 0) {
+      // Check if reason is not empty or only whitespace
+      handleLevelForward(complaint._id, rsn.trim()); // Pass reason as parameter
     } else {
       alert("Reason field can't be empty!");
-      return;
     }
-    setId(complaint._id);
-    handleLevelForward(complaint._id);
   }
-  function handleLevelForward(id) {
-    let level = JSON.stringify({  });
+
+  function handleLevelForward(id, reason) {
+    // Receive reason as parameter
     setLoading(true);
     let config2 = {
-      method: "patch",
+      method: "PATCH",
       maxBodyLength: Infinity,
       url: `http://localhost:3000/api/v1/tasks/pass/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
-      data: level,
+      data: JSON.stringify({
+        level: 1,
+        reason: reason, // Use the reason passed as parameter
+      }),
     };
+
     axios
       .request(config2)
       .then((response) => {
@@ -69,6 +73,7 @@ export default function GrievanceStatus(props) {
         alert("Error Occured:" + error.response.data.message);
       });
   }
+
   const [loading, setLoading] = React.useState(false);
   complaints.sort(function (a, b) {
     return a.status > b.status ? 1 : b.status > a.status ? -1 : 0;
