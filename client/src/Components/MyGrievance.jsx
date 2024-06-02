@@ -19,7 +19,7 @@ const MyGrievance = (props) => {
   };
 
   const [grievances, setGrievances] = useState([]);
-  grievances.sort((a, b) =>
+  grievances?.sort((a, b) =>
     a.status > b.status ? 1 : b.status > a.status ? -1 : 0
   );
 

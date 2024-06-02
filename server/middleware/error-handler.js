@@ -1,5 +1,6 @@
 const { CustomAPIError } = require('../errors')
 const { StatusCodes } = require('http-status-codes')
+require('dotenv').config();
 const errorHandlerMiddleware = (err, req, res, next) => {
 
   let customError = {

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const { UnauthenticatedError } = require('../errors/')
-
+require('dotenv').config();
 const auth = (req, res, next) => {
     //check header
     const authHeader = req.headers.authorization

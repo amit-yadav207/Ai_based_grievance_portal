@@ -3,7 +3,7 @@ const Officer = require('../models/Officer')
 const Admin = require('../models/Admin');
 const { UnauthenticatedError } = require('../errors');
 const jwt = require('jsonwebtoken')
-
+require('dotenv').config();
 function roleAuthenticationMiddleware(role) {
     return async (req, res, next) => {
         console.log('verifying role')
