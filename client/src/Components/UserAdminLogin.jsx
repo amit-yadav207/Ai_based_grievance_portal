@@ -8,8 +8,8 @@ import Loading from "./Loading";
 function Login(props){
   const [loginData, setLoginData] = React.useState({email:"", password:""});
   const [user, setUser] = React.useState("Citizen");
-  const BASE_URL="http://localhost:5000/api/v1"
-  // const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
+  // const BASE_URL="http://localhost:5000/api/v1"
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
 
   function handleChange(e){
     setLoginData({...loginData, [e.target.name]:e.target.value});
