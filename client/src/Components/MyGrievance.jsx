@@ -6,20 +6,18 @@ import Loading from "./Loading";
 
 const MyGrievance = (props) => {
   const token = localStorage.getItem("token");
-  // const BASE_URL="http://localhost:5000/api/v1"
-  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
 
   let config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: `${BASE_URL}/complaints`,
+    url: "http://localhost:3000/api/v1/complaints",
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
 
   const [grievances, setGrievances] = useState([]);
-  grievances?.sort((a, b) =>
+  grievances.sort((a, b) =>
     a.status > b.status ? 1 : b.status > a.status ? -1 : 0
   );
 
@@ -47,7 +45,7 @@ const MyGrievance = (props) => {
     let config = {
       method: "patch",
       maxBodyLength: Infinity,
-      url: `${BASE_URL}/complaints/${id}`,
+      url: `http://localhost:3000/api/v1/complaints/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -71,7 +69,7 @@ const MyGrievance = (props) => {
     let config2 = {
       method: "patch",
       maxBodyLength: Infinity,
-      url: `${BASE_URL}/complaints/reminder/${id}`,
+      url: `http://localhost:3000/api/v1/complaints/reminder/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -107,7 +105,7 @@ const MyGrievance = (props) => {
       let config3 = {
         method: "patch",
         maxBodyLength: Infinity,
-        url: `${BASE_URL}/complaints/rateOfficer/${id}`,
+        url: `http://localhost:3000/api/v1/complaints/rateOfficer/${id}`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -135,7 +133,7 @@ const MyGrievance = (props) => {
     let config = {
       method: "delete",
       maxBodyLength: Infinity,
-      url: `${BASE_URL}/complaints/${id}`,
+      url: `http://localhost:3000/api/v1/complaints/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },

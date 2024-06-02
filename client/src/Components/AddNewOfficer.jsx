@@ -3,10 +3,6 @@ import axios from "axios";
 import Loading from "./Loading";
 
 export default function AddNewOfficer(props) {
-
-
-  // const BASE_URL="http://localhost:5000/api/v1"
-  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
   const token = localStorage.getItem("token");
      const [data, setData] = React.useState({
       name: "",level:-1,department:"",email:"",password:""
@@ -30,7 +26,7 @@ export default function AddNewOfficer(props) {
           let config = {
             method: "post",
             maxBodyLength: Infinity,
-            url: `${BASE_URL}/manage/registerOfficer`,
+            url: "http://localhost:3000/api/v1/manage/registerOfficer",
             headers: {
               "Content-Type": "application/json",
               Authorization:

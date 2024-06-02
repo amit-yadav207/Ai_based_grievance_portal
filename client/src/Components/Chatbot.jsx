@@ -110,14 +110,11 @@ function Chatbot() {
   
   `
   const getAnswerLLM = async (data) => {
-    // const BASE_URL="http://localhost:5000/api/v1"
-  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
-
     try {
       const token=localStorage.getItem("token");
       // Send message to the server
       const response = await fetch(
-        `${BASE_URL}/chat/message`,
+        "http://localhost:3000/api/v1/chat/message",
         {
           method: "POST",
           headers: {
@@ -158,7 +155,7 @@ function Chatbot() {
       };
 
       const responseByBot = await getAnswerLLM(
-        `from provided context ${context} , reply according to that and ask follow up questions if need and resolve user query. here is query or question ${transcription}`
+        `from provided context ${context} , reply according to that and ask follow up questions if need and resolve your query. here is query or question ${transcription}`
       );
       console.log(responseByBot);
       setMessages([

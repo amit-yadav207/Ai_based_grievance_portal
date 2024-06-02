@@ -45,9 +45,7 @@ const chatRouter = require('./routes/chat');
 const { roleAuthenticationMiddleware } = require('./middleware/roleAuthentication.js');
 
 // routes
-app.use('/api/v1/', async (req, res) => {
-  res.send("hello, your sever is running")
-})
+
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/user', authenticateUser, roleAuthenticationMiddleware('user'), userRouter)
 app.use('/api/v1/complaints', authenticateUser, roleAuthenticationMiddleware('user'), complaintsRouter)
@@ -66,7 +64,7 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 const start = async () => {
   try {

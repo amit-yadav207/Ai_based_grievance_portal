@@ -198,7 +198,7 @@ const sendEmail = async (to, subject, body) => {
       text: `Update: ${body}`
     });
 
-    // console.log('Message sent: %s', info.messageId);
+    console.log('Message sent: %s', info.messageId);
   } catch (err) {
     console.error(err);
   }

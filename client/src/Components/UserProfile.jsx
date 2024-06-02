@@ -6,13 +6,10 @@ import Loading from "./Loading";
 export default function UserProfile(props){
   const token = localStorage.getItem("token");
   // console.log("token in frontned userprofile ",token)
-  // const BASE_URL="http://localhost:5000/api/v1"
-  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
-
   let config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: `${BASE_URL}/user`,
+    url: "http://localhost:3000/api/v1/user",
     headers: {
       Authorization:
         `Bearer ${token}`,
@@ -56,13 +53,13 @@ export default function UserProfile(props){
              <div className="name-input flex justify-center items-center">
                <h4 className="text-xl md:text-3xl font-bold ml-6">Name:</h4>
                <h4 className="text-xl md:text-3xl ml-4 md:ml-8">
-                 {userData?.name}
+                 {userData.name}
                </h4>
              </div>
              <div className="name-input flex justify-center items-center mt-6 md:mt-10">
                <h4 className="text-xl md:text-3xl font-bold ml-6">Email:</h4>
                <h4 className="text-xl md:text-3xl ml-4 md:ml-8">
-                 {userData?.email}
+                 {userData.email}
                </h4>
              </div>
              <div className="name-input flex justify-center items-center mt-6 md:mt-10">
