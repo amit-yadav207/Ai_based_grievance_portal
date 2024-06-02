@@ -36,7 +36,7 @@ const getTask = async (req, res) => {
 
 
 const passTask = async (req, res) => {
-  // console.log("pass task")
+  console.log("pass task")
   const {
     body: { forwardedTo },
     officer: { officerId },
@@ -47,21 +47,21 @@ const passTask = async (req, res) => {
   //   throw new BadRequestError("Please provide a level");
   // }
 
-  // console.log("Reason:        ", req.body.reason)
+  console.log("Reason:        ", req.body.reason)
   const officer = await Officer.findOne({ _id: officerId });
   const compl = await Complaint.findOne({ _id: complaintId })
   if (!compl) {
-    // console.log("complaint nit found")
+    console.log("complaint nit found")
     // throw new NotFoundError("complaint not found");
   }
 
   if (compl.officerID != officerId) {
-    // console.log("unauthorisez")
+    console.log("unauthorisez")
 
     // throw new UnauthenticatedError("not authorized to update this task");
   }
   if (compl.status === "resolved") {
-    // console.log("complaint nresilved")
+    console.log("complaint nresilved")
 
     // throw new BadRequestError("Complaint already resolved. It can't be passed.")
   }
@@ -198,7 +198,7 @@ const sendEmail = async (to, subject, body) => {
       text: `Update: ${body}`
     });
 
-    console.log('Message sent: %s', info.messageId);
+    // console.log('Message sent: %s', info.messageId);
   } catch (err) {
     console.error(err);
   }

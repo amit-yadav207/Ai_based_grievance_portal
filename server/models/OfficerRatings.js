@@ -44,7 +44,7 @@ const OfficerRatingsSchema = new mongoose.Schema(
 OfficerRatingsSchema.methods.addRating = async function (numberofstars, complaintId, userId) {
 
     numberofstars = Number(numberofstars);
-    // console.log({ numberofstars, complaintId, userId });
+    console.log({ numberofstars, complaintId, userId });
     this.ratings.push({ numberofstars, complaintId, userId });
     let oldavg;
 

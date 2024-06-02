@@ -74,7 +74,7 @@ export default function WelcomeContent() {
       alert("Age should be greater than 18");
     } else {
       data.district = data.district[0].toUpperCase() + data.district.slice(1);
-      // console.log(data);
+      console.log(data);
       setLoading(true);
       try {
         const response = await axios.post(
@@ -83,7 +83,7 @@ export default function WelcomeContent() {
         );
         setLoading(false);
         alert("User created successfully");
-        // console.log(response);
+        console.log(response);
         navigate("/userlogin", {
           state: {
             token: response.data.token,
@@ -91,7 +91,7 @@ export default function WelcomeContent() {
           replace: true,
         });
       } catch (error) {
-        // console.log(error);
+        console.log(error);
         alert("User already exists");
         //here is ERRRRORRRR
       }
@@ -114,7 +114,7 @@ export default function WelcomeContent() {
       );
 
       const result = response.data;
-      // console.log(result.city);
+      console.log(result.city);
       const city = result.city;
       if (districts.includes(city)) {
         setData((prev) => ({
@@ -131,7 +131,7 @@ export default function WelcomeContent() {
   }
 
   React.useEffect(() => {
-    // console.log(data);
+    console.log(data);
   }, [data]);
   const [loading, setLoading] = React.useState(false);
 

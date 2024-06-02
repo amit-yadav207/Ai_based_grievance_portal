@@ -39,13 +39,13 @@ export default function ForgotPassword() {
           axios
             .request(config)
             .then((response) => {
-              // console.log(JSON.stringify(response.data));
+              console.log(JSON.stringify(response.data));
               setLoading(false);
               alert("Check your email for reset link");
               Navigate("/ResetPassword")
             })
             .catch((error) => {
-              // console.log(error);
+              console.log(error);
               alert(error.response.data.msg)
               setLoading(false);
               Navigate("/")

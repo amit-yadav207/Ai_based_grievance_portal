@@ -12,10 +12,10 @@ const register = async (req, res) => {
     const user = await User.create({ ...req.body });
     // /console.log("user in bg",user)
     const token = user.createJWT();
-    // console.log("token at auth controll", token)
+    console.log("token at auth controll", token)
     res.status(StatusCodes.CREATED).json({ user: { name: user.name }, token });
   } catch (error) {
-    // console.log("jwt token", error);
+    console.log("jwt token", error);
     res.status(400).json({ error: error.message });
   }
 
@@ -40,7 +40,7 @@ const login = async (req, res) => {
   }
 
   const token = user.createJWT();
-  // console.log("token at auth login controll", token)
+  console.log("token at auth login controll", token)
 
   res.status(StatusCodes.OK).json({ user: { name: user.name }, token })
 
@@ -93,10 +93,10 @@ const forgotPassword = async (req, res) => {
   // Send the email message
   transporter.sendMail(message, (err, info) => {
     if (err) {
-      // console.log(err);
+      console.log(err);
       throw new Error('Failed to send password reset email');
     } else {
-      // console.log(info);
+      console.log(info);
       res.status(StatusCodes.OK).json({ message: 'Password reset email sent' });
     }
   });

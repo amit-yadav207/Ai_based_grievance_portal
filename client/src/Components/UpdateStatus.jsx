@@ -49,7 +49,7 @@ export default function UpdateStatus(props) {
     axios
       .request(config2)
       .then((response) => {
-        // console.log(JSON.stringify(response.data));
+        console.log(JSON.stringify(response.data));
         setLoading(false);
         alert("Status Updated");
         window.location.reload(true);
@@ -77,7 +77,7 @@ export default function UpdateStatus(props) {
       axios
         .request(config)
         .then((response) => {
-          // console.log(JSON.stringify(response.data));
+          console.log(JSON.stringify(response.data));
           setComplaint(response.data.complaint)
           setLoading(false)
         })
@@ -86,7 +86,7 @@ export default function UpdateStatus(props) {
         });
     }
   }
-  // console.log(data.status)
+  console.log(data.status)
   function checkLogin() {
     if (!token) {
       navigate("/userAdminLogin");

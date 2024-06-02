@@ -160,7 +160,7 @@ function Chatbot() {
       const responseByBot = await getAnswerLLM(
         `from provided context ${context} , reply according to that and ask follow up questions if need and resolve user query. here is query or question ${transcription}`
       );
-      // console.log(responseByBot);
+      console.log(responseByBot);
       setMessages([
         ...messages,
         { type: "text", data: +"🧑 " + transcription, sender: "user" },

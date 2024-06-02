@@ -20,7 +20,7 @@ export default function AddNewOfficer(props) {
           navigate("/userAdminLogin");
         }
       }
-      // console.log(data.level)
+      console.log(data.level)
       function handleSubmit(){
         if(data.name=="" || data.level==-1 || data.department=="" || data.email=="" || data.password==""){
           alert("Please fill all the fields");
@@ -41,13 +41,13 @@ export default function AddNewOfficer(props) {
           axios
             .request(config)
             .then((response) => {
-              // console.log(JSON.stringify(response.data));
+              console.log(JSON.stringify(response.data));
               setLoading(false)
               alert("Officer Added Successfully")
               window.location.reload(true);
             })
             .catch((error) => {
-              // console.log(error);
+              console.log(error);
               alert("Error Occured:"+error.response.data.message);
             });
         }

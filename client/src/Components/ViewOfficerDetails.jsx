@@ -20,7 +20,7 @@ export default function MyGrievance(props) {
     axios
       .request(config)
       .then((response) => {
-        // console.log(JSON.stringify(response.data));
+        console.log(JSON.stringify(response.data));
         setOfficerDetails(response.data.data);
       
         setLoading(false)
