@@ -109,12 +109,13 @@ function Chatbot() {
   Bot: I’m glad to hear that. If you need any further help, feel free to contact us. Have a great day!
   
   `
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
   const getAnswerLLM = async (data) => {
     try {
       const token=localStorage.getItem("token");
       // Send message to the server
       const response = await fetch(
-        "http://localhost:3000/api/v1/chat/message",
+        `${BASE_URL}/chat/message`,
         {
           method: "POST",
           headers: {

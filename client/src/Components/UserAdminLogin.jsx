@@ -8,7 +8,7 @@ import Loading from "./Loading";
 function Login(props){
   const [loginData, setLoginData] = React.useState({email:"", password:""});
   const [user, setUser] = React.useState("Citizen");
-  
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
   function handleChange(e){
     setLoginData({...loginData, [e.target.name]:e.target.value});
   }
@@ -25,9 +25,9 @@ function Login(props){
       alert("Please fill all the fields");
     } else { 
       try {
-        const url = user === "Citizen" ? "http://localhost:3000/api/v1/auth/login" : 
-                    user === "Officer" ? "http://localhost:3000/api/v1/auth/officer/login" : 
-                                          "http://localhost:3000/api/v1/auth/admin/login";
+        const url = user === "Citizen" ? `${BASE_URL}/auth/login` : 
+                    user === "Officer" ? `${BASE_URL}/auth/officer/login` : 
+                                          `${BASE_URL}/auth/admin/login`;
         const config = {
           method: "post",
           maxBodyLength: Infinity,

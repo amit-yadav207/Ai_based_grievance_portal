@@ -3,11 +3,12 @@ import axios from "axios";
 import Modal from "./Modal";
 import Loading from "./Loading";
 export default function GrievanceStatus(props) {
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
   const token = localStorage.getItem("token");
   let config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: "http://localhost:3000/api/v1/tasks",
+    url: `${BASE_URL}/tasks`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -49,7 +50,7 @@ export default function GrievanceStatus(props) {
     let config2 = {
       method: "PATCH",
       maxBodyLength: Infinity,
-      url: `http://localhost:3000/api/v1/tasks/pass/${id}`,
+      url: `${BASE_URL}/tasks/pass/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",

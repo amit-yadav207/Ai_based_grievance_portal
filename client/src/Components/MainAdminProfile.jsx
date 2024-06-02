@@ -4,11 +4,12 @@ import axios from "axios";
 import Loading from "./Loading";
 export default function MainAdminProfile(props) {
     const [adminData,setAdminData]=React.useState({})
+    const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
     const token = localStorage.getItem("token");
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: "http://localhost:3000/api/v1/manage/",
+      url: `${BASE_URL}/manage/`,
       headers: {
         "Content-Type": "application/json",
         Authorization:

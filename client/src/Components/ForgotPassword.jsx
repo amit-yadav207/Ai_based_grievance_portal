@@ -23,11 +23,12 @@ export default function ForgotPassword() {
             alert("Please enter email");
         }
         else{
+          const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
           setLoading(true);
           let config = {
             method: "post",
             maxBodyLength: Infinity,
-            url: "http://localhost:3000/api/v1/auth/forgot-password",
+            url: `${BASE_URL}/auth/forgot-password`,
             headers: {
               "Content-Type": "application/json",
             },

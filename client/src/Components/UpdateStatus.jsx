@@ -14,10 +14,11 @@ export default function UpdateStatus(props) {
   function handleChange(e) {
     setData({ ...data, [e.target.name]: e.target.value });
   }
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
  let config = {
    method: "get",
    maxBodyLength: Infinity,
-   url: `http://localhost:3000/api/v1/tasks/${id}`,
+   url: `${BASE_URL}/tasks/${id}`,
    headers: {
      Authorization:
        `Bearer ${token}`,
@@ -26,7 +27,7 @@ export default function UpdateStatus(props) {
  let config2 = {
    method: "patch",
    maxBodyLength: Infinity,
-   url: `http://localhost:3000/api/v1/tasks/feedback/${id}`,
+   url: `${BASE_URL}/tasks/feedback/${id}`,
    headers: {
      Authorization:
        `Bearer ${token}`,

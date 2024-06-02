@@ -6,10 +6,12 @@ import Loading from "./Loading";
 export default function UserProfile(props){
   const token = localStorage.getItem("token");
   // console.log("token in frontned userprofile ",token)
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
   let config = {
+
     method: "get",
     maxBodyLength: Infinity,
-    url: "http://localhost:3000/api/v1/user",
+    url: `${BASE_URL}/user`,
     headers: {
       Authorization:
         `Bearer ${token}`,

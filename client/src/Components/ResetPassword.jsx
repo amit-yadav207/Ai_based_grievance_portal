@@ -35,11 +35,12 @@ export default function ForgotPassword() {
       alert("Please fill all the fields")
     }
     else{
+      const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
       setLoading(true)
         let config = {
             method: "post",
             maxBodyLength: Infinity,
-            url: "http://localhost:3000/api/v1/auth/reset-password",
+            url: `${BASE_URL}/auth/reset-password`,
             headers: {
                 "Content-Type": "application/json",
             },

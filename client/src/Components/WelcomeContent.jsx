@@ -11,7 +11,7 @@ export default function WelcomeContent() {
   const [showErrorMessage, setShowErrorMessage] = React.useState(false);
   const [cPasswordClass, setCPasswordClass] = React.useState("form-control");
   const [isCPasswordDirty, setIsCPasswordDirty] = React.useState(false);
-
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
   React.useEffect(() => {
     if (isCPasswordDirty) {
       if (password.current.value === cPassword.current.value) {
@@ -74,7 +74,7 @@ export default function WelcomeContent() {
       setLoading(true);
       try {
         const response = await axios.post(
-          "http://localhost:3000/api/v1/auth/register",
+          `${BASE_URL}auth/register`,
           data
         );
         setLoading(false);
