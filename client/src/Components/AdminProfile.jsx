@@ -21,7 +21,7 @@ export default function AdminProfile(props){
    axios
      .request(config)
      .then((response) => {
-       console.log(JSON.stringify(response.data));
+      //  console.log(JSON.stringify(response.data));
        setOfficerData(response.data.officer);
        setOfficerRatingData(response.data.officerRating);
         setLoading(false);
