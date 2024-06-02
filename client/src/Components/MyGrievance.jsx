@@ -96,7 +96,7 @@ const MyGrievance = (props) => {
     setRating(e.target.value);
   };
 
-  console.log("rating", rating);
+  // console.log("rating", rating);
 
   const handleRating = (id) => {
     if (rating === -1) {

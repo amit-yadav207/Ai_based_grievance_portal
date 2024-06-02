@@ -91,20 +91,20 @@ ComplaintSchema.methods.assignOfficer = async function (officer) {
   this.officerID = officer;
  
   await this.save();
-  console.log("assigned to officer")
+  // console.log("assigned to officer")
 };
 
 ComplaintSchema.methods.assignEmail = async function (email) {
   this.contact = email;
   
   await this.save();
-  console.log("mail sent to officer")
+  // console.log("mail sent to officer")
 };
 
 ComplaintSchema.methods.addFeedback = async function (officerName, officerLevel, feedback) {
   this.actionHistory.push({ officerName, officerLevel, feedback });
   await this.save();
-  console.log("feedback added")
+  // console.log("feedback added")
 };
 
 ComplaintSchema.methods.setRated = async function (numberofstars) {

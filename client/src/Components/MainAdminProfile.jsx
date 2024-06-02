@@ -22,12 +22,12 @@ export default function MainAdminProfile(props) {
       axios
         .request(config)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
+          // console.log(JSON.stringify(response.data));
           setAdminData(response.data.admin)
           setLoading(false)
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         }); 
     }, []);
     const [loading, setLoading] = React.useState(true);

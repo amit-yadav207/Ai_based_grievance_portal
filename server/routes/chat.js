@@ -94,7 +94,7 @@ initializeChat();
 
 // Route to handle chat messages
 router.post('/message', async (req, res) => {
-    console.log("chat router",req)
+    // console.log("chat router",req)
     // const { user: { userId } } = req
     const { message } = req.body;
 

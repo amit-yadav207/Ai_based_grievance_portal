@@ -23,11 +23,11 @@ export default function GrievanceStatus(props) {
     axios
       .request(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
+        // console.log(JSON.stringify(response.data));
         setComplaints(response.data.tasks);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         alert("Error Occured");
       });
   }, []);
@@ -67,13 +67,13 @@ export default function GrievanceStatus(props) {
     axios
       .request(config2)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
+        // console.log(JSON.stringify(response.data));
         setLoading(false);
         alert("Forwarded to next level Officer");
         window.location.reload(true);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         alert("Error Occured:" + error.response.data.message);
       });
   }

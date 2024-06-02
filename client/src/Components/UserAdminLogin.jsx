@@ -42,8 +42,8 @@ function Login(props){
         };
 
         const response = await axios.request(config);
-        console.log("got user")
-        console.log(JSON.stringify(response.data));
+        // console.log("got user")
+        // console.log(JSON.stringify(response.data));
         localStorage.setItem("token", response.data.token);
         setLoading(false);
         navigate(user === "Citizen" ? "/userpage" : user === "Officer" ? "/adminpage" : "/MainAdminPage");

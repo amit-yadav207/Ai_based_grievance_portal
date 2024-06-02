@@ -44,14 +44,14 @@ const reopenTask = async (req, res) => {
   const complaint = await Complaint.findById(complaintId);
   const officer = await Officer.findById(complaint.officerID);
 
-  console.log(complaint)
-  console.log(userId)
+  // console.log(complaint)
+  // console.log(userId)
 
   if (!complaint) {
     throw new NotFoundError("complaint not found");
   }
   if (complaint.status !== "resolved") {
-    console.log("already opem")
+    // console.log("already opem")
     throw new BadRequestError("Complaint is already opened")
   }
   if (complaint.reopensCount >= 3) {
@@ -84,7 +84,7 @@ const reopenTask = async (req, res) => {
 
 const createComplaint = async (req, res) => {
   req.body.createdBy = req.user.userId;
-  console.log("Creating complaint by  ",req.user.name)
+  // console.log("Creating complaint by  ",req.user.name)
 
 
 
@@ -97,11 +97,11 @@ const createComplaint = async (req, res) => {
   });
 
   if (!officer) {
-    console.log("no officer")
+    // console.log("no officer")
     // throw new NotFoundError("No officer in this district");
   }
 
-  console.log("officer found ", officer)
+  // console.log("officer found ", officer)
 
   const complaint = await Complaint.create(req.body);
   await complaint.assignOfficer(officer._id);
@@ -113,7 +113,7 @@ const createComplaint = async (req, res) => {
   );
   await officer.addComplaint(complaint._id)
 
-  console.log(complaint)
+  // console.log(complaint)
   res.status(StatusCodes.CREATED).json({ complaint });
   // res.status(StatusCodes.CREATED).json("SUCESS");
 
@@ -225,7 +225,7 @@ const sendEmail = async (to, subject, body, head) => {
       text: `Message from grievance portal: ${body}`,
     });
 
-    console.log("Message sent: %s", info.messageId);
+    // console.log("Message sent: %s", info.messageId);
   } catch (err) {
     console.error(err);
   }
@@ -239,7 +239,7 @@ const sendEmail = async (to, subject, body, head) => {
 //       to: to
 //     });
 
-//     console.log('Message sent: %s', message.sid);
+    console.log('Message sent: %s', message.sid);
 //   } catch (err) {
 //     console.error(err);
 //   }

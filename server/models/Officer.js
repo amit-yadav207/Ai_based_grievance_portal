@@ -92,11 +92,11 @@ OfficerSchema.methods.createJWT = function () {
 OfficerSchema.methods.addComplaint = async function (complaintId) {
     this.complaints.push(complaintId);
     await this.save();
-    console.log("add complaint to officer ");
+    // console.log("add complaint to officer ");
 };
 
 OfficerSchema.methods.addRating = async function (numberofstars, complaintId, userId) {
-    console.log({ numberofstars, complaintId, userId });
+    // console.log({ numberofstars, complaintId, userId });
     this.ratings.push({ numberofstars, complaintId, userId });
 
     let oldavg = this.avgRating || 0;

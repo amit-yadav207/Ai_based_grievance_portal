@@ -52,7 +52,7 @@ export default function ForgotPassword() {
         axios
             .request(config)
             .then((response) => {
-                console.log(JSON.stringify(response.data));
+                // console.log(JSON.stringify(response.data));
                 alert("Password reset successful");
                 setLoading(false);
                 Navigate("/userlogin");
