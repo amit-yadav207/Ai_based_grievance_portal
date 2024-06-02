@@ -6,6 +6,10 @@ import location from "../Images/location.png";
 import Loading from "./Loading";
 import districts from "./Districts";
 export default function WelcomeContent() {
+
+  // const BASE_URL="http://localhost:5000/api/v1"
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
+
   const password = React.useRef();
   const cPassword = React.useRef();
   const [showErrorMessage, setShowErrorMessage] = React.useState(false);
@@ -74,7 +78,7 @@ export default function WelcomeContent() {
       setLoading(true);
       try {
         const response = await axios.post(
-          "http://localhost:3000/api/v1/auth/register",
+          `${BASE_URL}/auth/register`,
           data
         );
         setLoading(false);

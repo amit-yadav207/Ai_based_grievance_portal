@@ -6,11 +6,13 @@ import Loading from "./Loading";
 
 const MyGrievance = (props) => {
   const token = localStorage.getItem("token");
+  // const BASE_URL="http://localhost:5000/api/v1"
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
 
   let config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: "http://localhost:3000/api/v1/complaints",
+    url: `${BASE_URL}/complaints`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -45,7 +47,7 @@ const MyGrievance = (props) => {
     let config = {
       method: "patch",
       maxBodyLength: Infinity,
-      url: `http://localhost:3000/api/v1/complaints/${id}`,
+      url: `${BASE_URL}/complaints/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -69,7 +71,7 @@ const MyGrievance = (props) => {
     let config2 = {
       method: "patch",
       maxBodyLength: Infinity,
-      url: `http://localhost:3000/api/v1/complaints/reminder/${id}`,
+      url: `${BASE_URL}/complaints/reminder/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -105,7 +107,7 @@ const MyGrievance = (props) => {
       let config3 = {
         method: "patch",
         maxBodyLength: Infinity,
-        url: `http://localhost:3000/api/v1/complaints/rateOfficer/${id}`,
+        url: `${BASE_URL}/complaints/rateOfficer/${id}`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -133,7 +135,7 @@ const MyGrievance = (props) => {
     let config = {
       method: "delete",
       maxBodyLength: Infinity,
-      url: `http://localhost:3000/api/v1/complaints/${id}`,
+      url: `${BASE_URL}/complaints/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },

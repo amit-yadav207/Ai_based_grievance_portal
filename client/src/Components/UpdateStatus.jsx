@@ -2,6 +2,9 @@ import React from "react";
 import axios from "axios";
 import Loading from "./Loading";
 export default function UpdateStatus(props) {
+  // const BASE_URL="http://localhost:5000/api/v1"
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
+
   const token=localStorage.getItem("token")
   const [id, setId] = React.useState("");
   function handleIDChange(e) {
@@ -17,7 +20,7 @@ export default function UpdateStatus(props) {
  let config = {
    method: "get",
    maxBodyLength: Infinity,
-   url: `http://localhost:3000/api/v1/tasks/${id}`,
+   url: `${BASE_URL}/tasks/${id}`,
    headers: {
      Authorization:
        `Bearer ${token}`,
@@ -26,7 +29,7 @@ export default function UpdateStatus(props) {
  let config2 = {
    method: "patch",
    maxBodyLength: Infinity,
-   url: `http://localhost:3000/api/v1/tasks/feedback/${id}`,
+   url: `${BASE_URL}/tasks/feedback/${id}`,
    headers: {
      Authorization:
        `Bearer ${token}`,

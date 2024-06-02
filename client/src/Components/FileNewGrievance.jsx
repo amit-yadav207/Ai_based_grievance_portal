@@ -14,10 +14,14 @@ function FileNewGrievance(props) {
     setData({ ...data, [e.target.name]: e.target.value });
   }
   const token = localStorage.getItem("token");
+  // const BASE_URL="http://localhost:5000/api/v1"
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
+
+
   let config = {
     method: "post",
     maxBodyLength: Infinity,
-    url: "http://localhost:3000/api/v1/complaints/",
+    url: `${BASE_URL}/complaints/`,
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",

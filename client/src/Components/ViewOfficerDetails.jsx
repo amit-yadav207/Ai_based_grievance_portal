@@ -2,12 +2,15 @@ import React, { Fragment } from "react";
 import axios from "axios";
 import Loading from "./Loading";
 export default function MyGrievance(props) {
+  // const BASE_URL="http://localhost:5000/api/v1"
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
+
   const [officerDetails, setOfficerDetails] = React.useState([]);
   const token=localStorage.getItem("token");
      let config = {
        method: "get",
        maxBodyLength: Infinity,
-       url: "http://localhost:3000/api/v1/manage/getOfficerData",
+       url: `${BASE_URL}/manage/getOfficerData`,
        headers: {
          Authorization: `Bearer ${token}`,
        },

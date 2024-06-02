@@ -3,12 +3,15 @@ import pfp from "../Images/pfp.png";
 import axios from "axios";
 import Loading from "./Loading";
 export default function MainAdminProfile(props) {
+  // const BASE_URL="http://localhost:5000/api/v1"
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
+
     const [adminData,setAdminData]=React.useState({})
     const token = localStorage.getItem("token");
     let config = {
       method: "get",
       maxBodyLength: Infinity,
-      url: "http://localhost:3000/api/v1/manage/",
+      url: `${BASE_URL}/manage/`,
       headers: {
         "Content-Type": "application/json",
         Authorization:

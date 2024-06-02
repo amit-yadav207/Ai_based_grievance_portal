@@ -5,6 +5,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import Loading from "./Loading";
 export default function ForgotPassword() {
+  // const BASE_URL="http://localhost:5000/api/v1"
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
+
       const [loading, setLoading] = React.useState(false);
       const [email,setEmail]=React.useState({
           email:""
@@ -27,7 +30,7 @@ export default function ForgotPassword() {
           let config = {
             method: "post",
             maxBodyLength: Infinity,
-            url: "http://localhost:3000/api/v1/auth/forgot-password",
+            url: `${BASE_URL}/auth/forgot-password`,
             headers: {
               "Content-Type": "application/json",
             },

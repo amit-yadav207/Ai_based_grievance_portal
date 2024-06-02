@@ -14,12 +14,14 @@ export default function UserPage() {
   const [redirectToReferrer, setRedirectToReferrer] = useState(false);
   const [isClicked, setIsClicked] = useState("1");
   const [visible, setVisible] = useState("profile");
+  // const BASE_URL="http://localhost:5000/api/v1"
+  const BASE_URL="https://ai-based-grievance-portal.onrender.com/api/v1"
 
   useEffect(() => {
     if (localStorage.getItem("token") == null) {
       window.location.href = "/userlogin";
     }
-    const api = "http://localhost:3000/api/v1/user";
+    const api = `${BASE_URL}/user`;
     const token = localStorage.getItem("token");
     axios
       .get(api, { headers: { Authorization: `Bearer ${token}` } })
