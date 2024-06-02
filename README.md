@@ -3,7 +3,7 @@
 This repository contains the code for an AI-based solution aimed at easing the process of lodging grievances. The solution consists of two main components: a client-side application and a server-side application.
 
 # Live Preview
--[Live link]()
+-[Live link](https://ai-based-grievance-portal.vercel.app/)
 
 ## Getting Started
 
