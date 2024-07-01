@@ -67,6 +67,11 @@ To run the `server` application, execute the following commands:
 <img width="948" alt="Screenshot 2024-05-25 012034" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/d8589f14-29ba-4e51-ae7c-37cb9bffdc2b">
 <img width="946" alt="Screenshot 2024-05-25 135225" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/116e213e-afb8-4112-9851-4fbfcda8a057">
 <img width="66" alt="Screenshot 2024-05-25 134930" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/e44b8c2e-e328-4197-b0cd-6726adc1915e">
+<img width="305" alt="Screenshot 2024-05-25 013846" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/d89b104e-ca25-4c05-8ae0-958e02eea8ee">
+<img width="942" alt="Screenshot 2024-05-25 012410" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/152265b0-87fb-4471-b650-0d3d9616c781">
+
+<img width="959" alt="Screenshot 2024-05-25 012430" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/4d8445b5-abc0-4b60-8b8a-308b1b1ad88d">
+<img width="946" alt="Screenshot 2024-05-25 012503" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/24145b29-e921-4f9d-bec0-cbffffda8405">
 
 ## Contributors
 
