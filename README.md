@@ -60,6 +60,13 @@ To run the `server` application, execute the following commands:
 ## Implementation Details
 
 - **Database Connectivity**: The solution connects to a non-relational database (MongoDB) for storing grievance-related data.
+## Screenshots
+<img width="941" alt="Screenshot 2024-05-25 012910" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/08d36157-d1e8-44af-9b2c-53fe8783d32b">
+<img width="952" alt="Screenshot 2024-05-25 014916" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/b0213ae2-04fd-4997-a30c-fb11cb25d043">
+<img width="952" alt="Screenshot 2024-05-25 012139" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/7a6773c7-13a5-4fb5-b36c-52bc24b81ddc">
+<img width="948" alt="Screenshot 2024-05-25 012034" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/d8589f14-29ba-4e51-ae7c-37cb9bffdc2b">
+<img width="946" alt="Screenshot 2024-05-25 135225" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/116e213e-afb8-4112-9851-4fbfcda8a057">
+<img width="66" alt="Screenshot 2024-05-25 134930" src="https://github.com/amit-yadav207/Ai_based_grievance_portal/assets/99413482/e44b8c2e-e328-4197-b0cd-6726adc1915e">
 
 ## Contributors
 
